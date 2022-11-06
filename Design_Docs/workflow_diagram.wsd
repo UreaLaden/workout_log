@@ -1,0 +1,33 @@
+@startuml Workout Planner
+header User App Flow
+Title "Typical Workflow Chart"
+skinparam actorstyle awesome
+skinparam RectangleBorderColor SteelBlue
+"Initial Login" as (fUse) #PaleGreen;line:green;text:blue
+"Recurrent Login" as (rUse)
+:Drae: as user #SteelBlue;line:blue;
+user --> (rUse)
+
+rectangle "First Time Setup" #AliceBlue{
+
+user --> (fUse)
+
+fUse -left-> (Create Account)
+(Create Account) --> (Create Goals)
+
+note left : Provide the user with the option to\nview a set of guidelines for creating a\nquality goal
+
+(Create Goals) --> (Starting Point)
+note left : Basic assessment
+
+(Starting Point) --> (Set Milestones)
+
+} 
+
+(Set Milestones) -right-> (Plan Workout)
+
+
+(rUse) --> (Review Milestones)
+(Review Milestones) --> (Plan Workout) :<font color=blue>Update\n<font color=blue>Goals if needed 
+
+@enduml
