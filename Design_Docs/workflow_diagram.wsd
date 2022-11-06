@@ -24,10 +24,22 @@ note left : Basic assessment
 
 } 
 
-(Set Milestones) -right-> (Plan Workout)
+(Set Milestones) ---> (Common Choices)
 
 
 (rUse) --> (Review Milestones)
-(Review Milestones) --> (Plan Workout) :<font color=blue>Update\n<font color=blue>Goals if needed 
+note right : Update\nGoals if needed
+(Review Milestones) --> (Common Choices) 
+
+rectangle "Common Features"{
+
+    (Plan My Workout)
+    (Check my Progress)
+    (Plan My Meal)
+}
+
+(Common Choices) --> (Plan My Workout)
+(Common Choices) --> (Check my Progress)
+(Common Choices) --> (Plan My Meal)
 
 @enduml
