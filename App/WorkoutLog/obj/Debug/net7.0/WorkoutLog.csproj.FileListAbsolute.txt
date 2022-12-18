@@ -277,3 +277,7 @@ D:\Apps\WorkoutLog\App\WorkoutLog\obj\Debug\net7.0\refint\WorkoutLog.dll
 D:\Apps\WorkoutLog\App\WorkoutLog\obj\Debug\net7.0\WorkoutLog.pdb
 D:\Apps\WorkoutLog\App\WorkoutLog\obj\Debug\net7.0\WorkoutLog.genruntimeconfig.cache
 D:\Apps\WorkoutLog\App\WorkoutLog\obj\Debug\net7.0\ref\WorkoutLog.dll
+D:\Apps\WorkoutLog\App\WorkoutLog\bin\Debug\net7.0\Microsoft.AspNetCore.JsonPatch.dll
+D:\Apps\WorkoutLog\App\WorkoutLog\bin\Debug\net7.0\Microsoft.AspNetCore.Mvc.NewtonsoftJson.dll
+D:\Apps\WorkoutLog\App\WorkoutLog\bin\Debug\net7.0\Newtonsoft.Json.Bson.dll
+D:\Apps\WorkoutLog\App\WorkoutLog\bin\Debug\net7.0\MockData\tempQuotes.json

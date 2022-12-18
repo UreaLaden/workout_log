@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Newtonsoft.Json;
 using WorkoutLog.Models;
 
 namespace WorkoutLog.Controllers
@@ -18,6 +19,41 @@ namespace WorkoutLog.Controllers
         public QuotesController(QuoteContext context)
         {
             _context = context;
+        }
+
+        [HttpGet("all")]
+        public async Task<ActionResult<Quote>> CollectQuotes()
+        {
+            try
+            {
+                using (StreamReader reader = new StreamReader("MockData\\tempQuotes.json"))
+                {
+                    string json = reader.ReadToEnd();
+                    if (json == null) return BadRequest("Json Object is null");
+                    List<Quote> items = JsonConvert.DeserializeObject<List<Quote>>(json);
+                    if (items == null || items.Count == 0) return NotFound();
+                    foreach(Quote q in items)
+                    {
+                        Quote quote = new Quote
+                        {
+                            Author = q.Author,
+                            Text = q.Text,
+                            Url = q.Url,
+                        };
+                        if(_context.Quotes == null)
+                        {
+                            return Problem("Entity Set 'QuoteContext.Quotes' is null.");
+                        }
+                        _context.Quotes.Add(quote);
+                    }
+                    await _context.SaveChangesAsync();
+                    return Ok(items);
+                }
+            }
+            catch (Exception ex)
+            {
+                return NotFound("We hit an issue: " + ex.Message);
+            }
         }
 
         // GET: api/Quotes
